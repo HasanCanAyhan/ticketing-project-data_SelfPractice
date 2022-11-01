@@ -14,7 +14,7 @@ public class RoleDtoConverter implements Converter<String, RoleDTO> {
 
     RoleService roleService;
 
-    public RoleDtoConverter(@Lazy RoleService roleService) { //we do not need it right away, inject it when time comes.
+    public RoleDtoConverter(@Lazy RoleService roleService) { //we do not need it right away, inject it when time comes, when we select one of roles
         this.roleService = roleService;
     }
 
