@@ -7,7 +7,7 @@ import java.util.Map;
 
 public abstract class AbstractMapService <T,ID> {
 
-    public Map<ID,T> map = new HashMap<>(); //DB
+    public Map<ID,T> map = new HashMap<>(); //DB --->> DB i anymore postgress/ticketing-app db
 
     T save(ID id,T object){
         map.put(id,object);
