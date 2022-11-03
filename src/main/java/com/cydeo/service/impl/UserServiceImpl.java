@@ -8,6 +8,7 @@ import com.cydeo.service.UserService;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -52,6 +53,33 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void deleteByUserName(String username) {
+
+        userRepository.deleteByUserName(username);
+
+
+    }
+
+    @Override
+    public UserDTO update(UserDTO user) { // updated user
+
+        //find current user for id
+
+        User user1 = userRepository.findByUserName(user.getUserName()); // has id
+
+        //map update user dto to entity object
+        User convertedUser = userMapper.convertToEntity(user); // has no id
+
+        //set id to the converted object
+
+        convertedUser.setId(user1.getId());
+
+        //save the updated user in the db
+
+        userRepository.save(convertedUser);
+
+        return findByUserName(user.getUserName());
+
+
 
     }
 }
