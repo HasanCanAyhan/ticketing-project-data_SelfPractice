@@ -36,8 +36,8 @@ public class UserController {
     }
 
 
-    @PostMapping("/create")
-    public String insertUser(@Valid @ModelAttribute("user") UserDTO user, BindingResult bindingResult, Model model) {
+    @PostMapping("/create") //@Valid
+    public String insertUser( @ModelAttribute("user") UserDTO user, BindingResult bindingResult, Model model) {
 
         if (bindingResult.hasErrors()) {
 
@@ -54,19 +54,20 @@ public class UserController {
 
     }
 
-    /*
+
 
     @GetMapping("/update/{username}")
     public String editUser(@PathVariable("username") String username, Model model) {
 
-        model.addAttribute("user", userService.findById(username));
-        model.addAttribute("roles", roleService.findAll());
-        model.addAttribute("users", userService.findAll());
+        model.addAttribute("user", userService.findByUserName(username));
+        model.addAttribute("roles", roleService.listAllRoles());
+        model.addAttribute("users", userService.listAllUsers());
 
         return "/user/update";
 
     }
 
+    /*
     @PostMapping("/update")
     public String updateUser(@Valid @ModelAttribute("user") UserDTO user, BindingResult bindingResult, Model model) {
 

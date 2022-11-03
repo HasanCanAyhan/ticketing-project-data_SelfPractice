@@ -19,13 +19,13 @@ public class RoleDtoConverter implements Converter<String, RoleDTO> {
     }
 
     @Override
-    public RoleDTO convert(String source) {
+    public RoleDTO convert(String source) { // source is ex : "2"
 
         if (source == null || source.equals("")) {  //  Select  -> ""
             return null;
         }
 
-        return roleService.findById(Long.parseLong(source));
+        return roleService.findById(Long.parseLong(source)); //convert string to first Long id, so we can find it with indById
 
     }
 

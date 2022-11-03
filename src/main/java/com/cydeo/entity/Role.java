@@ -3,6 +3,8 @@ package com.cydeo.entity;
 import lombok.*;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Getter
@@ -12,6 +14,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "roles")
 public class Role extends BaseEntity{
+
 
     private String description;
 

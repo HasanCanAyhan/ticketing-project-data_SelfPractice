@@ -26,7 +26,7 @@ public class UserMapper {
     }
 
     public UserDTO convertToDto(User entity){
-        return modelMapper.map(entity,UserDTO.class); //UserDTO.class means what it return
+        return modelMapper.map(entity,UserDTO.class); //UserDTO.class means what it returns.
     }
 
 
