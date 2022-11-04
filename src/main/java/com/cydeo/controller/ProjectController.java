@@ -2,6 +2,7 @@ package com.cydeo.controller;
 
 import com.cydeo.dto.ProjectDTO;
 import com.cydeo.dto.UserDTO;
+import com.cydeo.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -14,7 +15,6 @@ import java.util.List;
 @RequestMapping("/project")
 public class ProjectController {
 
-    /*
     private final UserService userService;
     private final ProjectService projectService;
 
@@ -33,6 +33,8 @@ public class ProjectController {
         return "/project/create";
 
     }
+
+    /*
 
     @PostMapping("/create")
     public String insertProject(@Valid @ModelAttribute("project") ProjectDTO project, BindingResult bindingResult, Model model) {
