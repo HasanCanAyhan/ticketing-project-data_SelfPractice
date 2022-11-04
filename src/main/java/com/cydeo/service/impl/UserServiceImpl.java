@@ -52,9 +52,9 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void deleteByUserName(String username) {
+    public void deleteByUserName(String username) { // deletes everything from DB related to user
 
-        userRepository.deleteByUserName(username);
+                userRepository.deleteByUserName(username);
 
 
     }
@@ -81,5 +81,21 @@ public class UserServiceImpl implements UserService {
 
 
 
+    }
+
+    @Override
+    public void delete(String username) { // delete method will delete user only from UI-Part, nor from DB
+
+        //find user from db with userName
+        //change the isDeleted field to true
+        //save the object in the db
+
+        User user = userRepository.findByUserName(username);
+        user.setIsDeleted(true); // just give info for DB Part
+        userRepository.save(user);
+
+        //we will delete from UI-Part , not from DB
+
+        //We only want to get the ones that is not deleted,so it means is_deleted needs to be false.
     }
 }

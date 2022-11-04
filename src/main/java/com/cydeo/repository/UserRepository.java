@@ -14,4 +14,7 @@ public interface UserRepository extends JpaRepository<User,Long> {
     @Transactional // we can put it top of method or top of class
     void deleteByUserName(String username); // @Transactional with derived query : @Modifiying using with JPQL and Native query
 
+
+
+
 }
