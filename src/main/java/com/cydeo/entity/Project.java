@@ -37,6 +37,7 @@ public class Project extends BaseEntity{
     @JoinColumn(name = "manager_id")
     private User assignedManager;
 
+    //user object should be converted as manager_id as a foreign key for project
 
 
 }

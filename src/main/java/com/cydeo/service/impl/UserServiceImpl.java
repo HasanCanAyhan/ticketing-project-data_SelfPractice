@@ -98,4 +98,19 @@ public class UserServiceImpl implements UserService {
 
         //We only want to get the ones that is not deleted,so it means is_deleted needs to be false.
     }
+
+    @Override
+    public List<UserDTO> listAllByRole(String role) {
+
+        List<User> users = userRepository.findAllByRoleDescriptionIgnoreCase(role);
+
+        return users.stream()
+                .map(managers -> userMapper.convertToDto(managers))
+                .collect(Collectors.toList());
+
+
+
+
+
+    }
 }
