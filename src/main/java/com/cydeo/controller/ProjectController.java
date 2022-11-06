@@ -104,19 +104,21 @@ public class ProjectController {
 
     }
 
-    /*
+
 
     @GetMapping("/manager/project-status")
     public String getProjectByManager(Model model) {
 
-        UserDTO manager = userService.findById("john@cydeo.com");
-        List<ProjectDTO> projects = projectService.getCountedListOfProjectDTO(manager);
+        List<ProjectDTO> projects = projectService.listAllProjectDetails();
+        //I log in system as manager, give me allProjects assigned to that manager
 
         model.addAttribute("projects", projects);
 
         return "/manager/project-status";
 
     }
+
+    /*
 
     @GetMapping("/manager/complete/{projectCode}")
     public String managerCompleteProject(@PathVariable("projectCode") String projectCode) {
