@@ -14,7 +14,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 public class ProjectDTO {
 
-    //Long id ; for project_id : foreign key for task
+    private Long id ; // for project_id : task looking for foreign which is project_id
 
 
     @NotBlank
