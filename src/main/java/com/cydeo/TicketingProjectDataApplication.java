@@ -17,9 +17,13 @@ public class TicketingProjectDataApplication {
     //create class with @Configuration
     //write a method which return the object that you trying to add in the container
     //Annotate this method with @Bean
+
     @Bean
     public ModelMapper mapper(){ // for dependency injection and modelmapper class is not our class, it is ready class so that we need @Bean annotation
         return new ModelMapper();
     }
+
+
+
 
 }
