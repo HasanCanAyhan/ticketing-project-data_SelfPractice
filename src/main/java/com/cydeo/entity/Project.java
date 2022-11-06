@@ -17,7 +17,10 @@ import java.time.LocalDate;
 @Where(clause = "is_deleted=false")
 public class Project extends BaseEntity{
 
+    @Column(unique = true) // project code has to be unique, so thatannotations is not ganna let you create project with same code
     private String projectCode;
+
+
     private String projectName;
 
     @Column(columnDefinition = "DATE")
