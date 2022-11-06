@@ -24,7 +24,7 @@ public class TaskMapper {
 
     }
 
-    public TaskDTO convertToDto(Role entity){
+    public TaskDTO convertToDto(Task entity){
         return modelMapper.map(entity,TaskDTO.class);
     }
 

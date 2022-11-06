@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
 
-@SpringBootApplication
+@SpringBootApplication // this includes @Configuration
 public class TicketingProjectDataApplication {
 
     public static void main(String[] args) {
