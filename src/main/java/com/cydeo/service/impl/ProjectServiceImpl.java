@@ -125,7 +125,7 @@ public class ProjectServiceImpl implements ProjectService {
         Also we won't be able to reach the ProjectRepository from UserServiceImpl etc.
          */
 
-        UserDTO currentUserDto = userService.findByUserName("harold@gmail.com"); // it will come with Security -lesson
+        UserDTO currentUserDto = userService.findByUserName("harold@manager.com"); // it will come with Security -lesson
 
         User user = userMapper.convertToEntity(currentUserDto);
 
