@@ -126,15 +126,13 @@ public class TaskController {
         return "/task/archive";
     }
 
-    /*
+
     @GetMapping("/employee/edit/{id}")
     public String employeeEditTask(@PathVariable Long id, Model model) {
 
         model.addAttribute("task", taskService.findById(id));
-//        model.addAttribute("projects", projectService.findAll());
-//        model.addAttribute("employees", userService.findEmployees());
         model.addAttribute("statuses", Status.values());
-        model.addAttribute("tasks", taskService.findAllTasksByStatusIsNot(Status.COMPLETE));
+        model.addAttribute("tasks", taskService.listAllTasksByStatusIsNot(Status.COMPLETE));
 
         return "/task/status-update";
 
@@ -146,18 +144,18 @@ public class TaskController {
         if (bindingResult.hasErrors()) {
 
             model.addAttribute("statuses", Status.values());
-            model.addAttribute("tasks", taskService.findAllTasksByStatusIsNot(Status.COMPLETE));
+            model.addAttribute("tasks", taskService.listAllTasksByStatusIsNot(Status.COMPLETE));
 
             return "/task/status-update";
 
         }
 
-        taskService.updateStatus(task);
+        taskService.update(task);
 
         return "redirect:/task/employee/pending-tasks";
 
     }
 
-     */
+
 
 }
