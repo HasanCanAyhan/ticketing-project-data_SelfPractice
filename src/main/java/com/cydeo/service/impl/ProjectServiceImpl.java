@@ -131,15 +131,15 @@ public class ProjectServiceImpl implements ProjectService {
 
         //go to DB, give me all the projects assigned zo manager login in the system
 
-        List<Project> list = projectRepository.findAllByAssignedManager(user);
-        //plus + we should have 2 fields
+        List<Project> list = projectRepository.findAllByAssignedManager(user); // projectList belongs to this manager
+        // but project entity does not have those 2 fields : unfinished and completed tasks
+        //plus + we should have 2 fields : project view in the UI Part need these fields.
 
         return list.stream().map(project -> {
 
-            ProjectDTO obj = projectMapper.convertToDto(project);
+            ProjectDTO obj = projectMapper.convertToDto(project); // convert it to dto bcs projectDto has 2 fields
 
             obj.setUnfinishedTaskCounts(taskService.totalNonCompletedTask(project.getProjectCode()));
-
 
             obj.setCompleteTaskCounts(taskService.totalCompletedTask(project.getProjectCode()));
 
