@@ -15,12 +15,15 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @Entity
 @Table(name = "users")
-@Where(clause = "is_deleted=false") // put all repository which work with user entity, as query "where isDeleted = false;"
-public class User extends BaseEntity {
+//@Where(clause = "is_deleted=false") // put all repository which work with user entity, as query "where isDeleted = false;"
+public class User extends BaseEntity { // select * from users where id = 4 and is_deleted = false
 
     private String firstName;
     private String lastName;
+
+    @Column(unique = true)
     private String userName;
+
     private String passWord;
     private boolean enabled;
     private String phone;

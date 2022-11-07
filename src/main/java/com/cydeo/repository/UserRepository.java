@@ -8,13 +8,14 @@ import java.util.List;
 
 public interface UserRepository extends JpaRepository<User,Long> {
 
-    //get User based on username
+    List<User> findAllByIsDeletedOrderByFirstNameDesc(Boolean deleted);
 
-    User findByUserName(String username);
+    //get User based on username
+    User findByUserNameAndIsDeleted(String username, Boolean deleted);
 
     @Transactional // we can put it top of method or top of class
     void deleteByUserName(String username); // @Transactional with derived query : @Modifiying using with JPQL and Native query
 
 
-    List<User> findAllByRoleDescriptionIgnoreCase(String description);
+    List<User> findAllByRoleDescriptionIgnoreCaseAndIsDeleted(String description,Boolean deleted);
 }
