@@ -68,7 +68,7 @@ public class ProjectServiceImpl implements ProjectService {
 
         dto.setProjectStatus(Status.OPEN);
 
-        projectRepository.save( projectMapper.convertToEntity(dto));
+        projectRepository.save(projectMapper.convertToEntity(dto));
 
     }
 
@@ -91,13 +91,20 @@ public class ProjectServiceImpl implements ProjectService {
     public void delete(String code) {
 
 
-            //find user from db with projectCode
-            //change the isDeleted field to true
-            //save the object in the db
+        //find user from db with projectCode
+        //change the isDeleted field to true
+        //save the object in the db
 
-            Project project = projectRepository.findByProjectCode(code);
-            project.setIsDeleted(true); // just give info for DB Part
-            projectRepository.save(project);
+        Project project = projectRepository.findByProjectCode(code);
+        project.setIsDeleted(true); // just give info for DB Part
+
+        //                                                      another unique thing
+        project.setProjectCode(project.getProjectCode() + "-" + project.getId()); // SPOO-1 : with that, I can use same projectCode again while creating new project
+
+        projectRepository.save(project);
+
+
+        taskService.deleteByProject(projectMapper.convertToDto(project));
 
     }
 
@@ -108,6 +115,7 @@ public class ProjectServiceImpl implements ProjectService {
         project.setProjectStatus(Status.COMPLETE);
         projectRepository.save(project);
 
+        taskService.completeByProject(projectMapper.convertToDto(project));
 
     }
 
@@ -146,8 +154,6 @@ public class ProjectServiceImpl implements ProjectService {
             return obj;
 
         }).collect(Collectors.toList());
-
-
 
 
     }
